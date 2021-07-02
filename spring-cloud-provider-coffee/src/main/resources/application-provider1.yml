@@ -1,0 +1,38 @@
+server:
+  port: 8002
+
+spring:
+  application:
+    name: provider
+  datasource:
+    username: sa
+    password:
+    platform: h2
+    schema: classpath:db/schema.sql
+    data: classpath:db/data.sql
+  jpa:
+    generate-ddl: false
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  h2:
+    console:
+      settings:
+        web-allow-others: true
+      path: /h2
+      enabled: true
+
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: "http://localhost:9091/eureka,http://localhost:9092/eureka"
+
+
+logging:
+  level:
+    root: INFO
+    org.hibernate: INFO
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    org.hibernate.type.descriptor.sql.BasicExtractor: TRACE
